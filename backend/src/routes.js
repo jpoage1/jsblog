@@ -1,10 +1,11 @@
 // Local path, route,  select, from, where, order 
+const dataValidation = require("./Components/dataValidation");
 module.exports = [
 	{
 		path: '/Api/Posts',
 		method: {
 			get: {
-				select: ['id','title','date','content'],
+				select: ['id','title','timestamp','content'],
 				from: ['posts'],
 				where: [],
 				order: '', // asc, desc
@@ -12,7 +13,7 @@ module.exports = [
 			},
 			post: {
 				table: 'posts',
-				insert: ['title', 'date', 'content'],
+				insert: ['title', 'timestamp', 'content'],
 			},
 			put: '*',
 			delete: {
@@ -28,10 +29,11 @@ module.exports = [
 					autoIncrement: true,
 				},
 				title: {
-					type: 'string'
+					type: 'string',
 				},
-				date: {
-					type: 'date'
+				timestamp: {
+					type: 'bigint',
+					validate: 'timestamp'
 				},
 				content: {
 					type: 'string'

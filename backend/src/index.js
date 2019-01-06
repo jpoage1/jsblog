@@ -59,12 +59,13 @@ routes.forEach( (route) => {
 			return `"${column}", `
 		}).join(' ').slice(0,-2);
 		const sqlValues = insert.map( (column, i) => {
-			const columnValue = dataValidation(route.table.columns[column].type, column, body[column]);
-			if ( isNaN(columnValue) )	{
-				return `'${columnValue}', `
-			}
-			return `${columnValue}, `
-		}).join(' ').slice(0,-2);
+			const dataType = route.table.columns[column].type;
+			const value = body[column];
+			const validateData = route.table.columns[column].validate
+				? dataValidation(route.table.columns[column].validate, value)
+				: dataValidation(dataType, value);
+			return validateData();
+		}).join(', ');
 		const sql = `INSERT INTO ${table}\n(${sqlColumns})\nVALUES\n(${sqlValues}) `;
 		console.log(sql)
 		pool.query(sql)
