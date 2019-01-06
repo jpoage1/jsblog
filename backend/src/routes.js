@@ -11,29 +11,29 @@ module.exports = [
 				orderBy: [],
 			},
 			post: {
-				table: 'users',
-				insert: ['nickname', 'firstname', 'lastname'],
+				table: 'posts',
+				insert: ['title', 'date', 'content'],
 			},
 			put: '*',
 			delete: {
-				table: 'users',
+				table: 'posts',
 				where: ['id','eq',':id'],
 			},
 		},
 		table: {
-			name: 'users',
+			name: 'posts',
 			columns: {
 				id: {
 					type: 'integer',
 					autoIncrement: true,
 				},
-				nickName: {
+				title: {
 					type: 'string'
 				},
-				firstName: {
-					type: 'string'
+				date: {
+					type: 'date'
 				},
-				lastName: {
+				content: {
 					type: 'string'
 				},
 			},

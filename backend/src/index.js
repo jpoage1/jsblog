@@ -12,6 +12,7 @@ const pool = require("./Components/pool");
 const objToWhere = require("./Components/objToWhere");
 const routes = require("./routes");
 const executeQuery = require("./Components/executeQuery");
+const dataValidation = require("./Components/dataValidation");
 routes.forEach( (route) => {
 	//console.log(route[0])
 	const { localPath } = route;
@@ -56,12 +57,13 @@ routes.forEach( (route) => {
 		const { table, insert } = route.method.post;
 		const sqlColumns = insert.map( (column, i) => {
 			return `"${column}", `
-		}).join(' ').slice(0,-2);;
+		}).join(' ').slice(0,-2);
 		const sqlValues = insert.map( (column, i) => {
-			if ( isNaN(body[column]) )	{
-				return `'${body[column]}', `
+			const columnValue = dataValidation(route.table.columns[column].type, column, body[column]);
+			if ( isNaN(columnValue) )	{
+				return `'${columnValue}', `
 			}
-			return `${body[column]}, `
+			return `${columnValue}, `
 		}).join(' ').slice(0,-2);
 		const sql = `INSERT INTO ${table}\n(${sqlColumns})\nVALUES\n(${sqlValues}) `;
 		console.log(sql)
