@@ -1,0 +1,147 @@
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+ * {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 10px;
+  background: #f1f1f1;
+}
+
+/* Header/Blog Title */
+.header {
+  padding: 30px;
+  text-align: center;
+  background: white;
+}
+
+.header h1 {
+  font-size: 50px;
+}
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.content {   
+  float: left;
+  width: 75%;
+}
+
+/* Right column */
+.sidebar {
+  float: left;
+  width: 25%;
+  background-color: #f1f1f1;
+  padding-left: 20px;
+}
+
+/* Fake image */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Add a card effect for articles */
+.post, .menu {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+.post .p {
+	width: 100%
+}
+
+/* Clear floats after the columns */
+.body:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .site-content, .site-sidebar {   
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}
+h1, h2, h3, h4, h5, h6, header, footer, .h1, .h2, .h3, .h4, .h5, .h6, .header, .footer {
+	font-family: 'Jaldi', sans-serif;
+	width: 100%;
+	display: block;
+}
+a.h3 {
+	color: #333;
+	text-decoration: none;
+}
+html, body, p, div, .p, .div {
+	font-family: 'Roboto Slab', serif;
+	font-size: 16pt;
+}
+code,  blockquote, pre, .code, .blockquote, .pre {
+	font-family: 'Fira Mono', monospace;
+}
+input, textarea {
+	border: 1px solid gray;
+	border-radius: 5px;
+}
+h1, .h1 {
+	font-size: 28pt;
+}
+h2, .h2 {
+	font-size: 24pt;
+	font-weight: bold;
+}
+h3, .h3 {
+	font-size: 22pt;
+}
+h4, .h4 {
+	font-size: 20pt;
+}
+h5, .h5 {
+	font-size: 19pt;
+}
+h6, .h6 {
+	font-size: 18pt;
+}
