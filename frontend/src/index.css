@@ -47,8 +47,11 @@ body {
 /* Create two unequal columns that floats next to each other */
 /* Left column */
 .content {   
+  display: block;
   float: left;
   width: 75%;
+  min-width: 50%;
+  max-width: 75%;
 }
 
 /* Right column */

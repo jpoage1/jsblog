@@ -21,12 +21,11 @@ class SwitchRoutes extends Component {
         const switchRoutes = routes !== undefined && routes.length > 0
           ? this.routeConfig(routes, fullPath, 0)
           : [];
-       // console.log(switchRoutes)
 
         const RoutesToMenu = path === '' ? this.props.routes : undefined;
         const routeConfig = {
           path: fullPath,
-          render: (props) => (<C {...this.props} {...props} {...routeProps} routes={RoutesToMenu} />),
+          render: (props) => (<C {...this.props} {...props} {...routeProps} routes={RoutesToMenu} route={this.props.routes[i]} />),
           key: `route_${path}_${i}`,
           exact: exact === true ? true : false,
         }

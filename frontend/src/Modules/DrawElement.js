@@ -3,16 +3,17 @@ import Form from "./Form"
 
 class DrawElement extends Form {
 	newState(x,y) {
-		return this.props.newState(x,y)
+		// wrapper function: props are only allow  to be lowercase 
+		return this.props.newstate(x,y)
 	}
 	onFocus(event) {
-		if ( event.target.value === this.props.data ) {
-			this.newState(this.props.name, this.props.data)
+		if ( event.target.value === this.props.element.props.value ) {
+			this.newState(this.props.name, '')
 		}
 	}
 	onBlur(event) {
 		if ( event.target.value === "" ) {
-			this.newState(this.props.name, this.props.data)
+			this.newState(this.props.name, this.props.element.props.value)
 		}
 	}
 	onChange(event) {
@@ -34,7 +35,7 @@ class DrawElement extends Form {
 	}
 	render () {
 		const { element } = this.props;
-		
+
 		const eventHandlers = this.newState ? this.setEventHandlers() : undefined;
 
 
@@ -72,6 +73,7 @@ class DrawElement extends Form {
 				children = element.label;
 			}
 		}
+
 		const excludedProps = ['element','data','newstate'];
 		let passProps = {};
 		Object.keys(this.props).forEach( ( prop ) => {
@@ -79,6 +81,7 @@ class DrawElement extends Form {
 				passProps[prop] = this.props[prop];
 			}
 		});
+
 		if ( Array.isArray(children) || children ) {
 			return (<Tag name={elementName} {...eventHandlers} {...props} {...passProps}>{children}</Tag>);
 		} else {

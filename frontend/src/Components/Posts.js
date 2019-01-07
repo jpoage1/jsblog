@@ -21,7 +21,7 @@ class Posts extends GetData {
 			content: 'Content',
 		}] */
 		const posts = this.state.data;
-		const htmlPosts = posts ? posts.map( ( post, i ) => (<Post key={i} post={post}/>) ) : undefined;
+		const htmlPosts = posts ? posts.map( ( post, i ) => (<Post key={i} post={post} />) ) : (<Post post={this.props.route.default} />);
 		return htmlPosts;
 	}
 }

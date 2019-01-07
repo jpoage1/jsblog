@@ -4,7 +4,6 @@ import BrowseByCategory from '../Components/BrowseByCategory';
 
 
 class Sidebar extends Component {
-  state = { };
   render() {
     return (
       <div className="sidebar">

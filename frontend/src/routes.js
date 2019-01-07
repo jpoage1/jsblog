@@ -12,6 +12,11 @@ const routes =
 	    path: '',
 	    component: Posts,
 	    exact: true,
+	    default: 
+	    	{
+			title: 'No Posts',
+			content: `There currently aren't any posts to display.`,
+	    }
 	},
 	{
 	    path: 'newpost',

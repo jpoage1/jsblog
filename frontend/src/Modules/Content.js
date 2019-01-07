@@ -10,6 +10,7 @@ class Content extends Component {
   render() {
     return (
       <div className="content">
+      &nbsp;
         <BrowserRouter>
           <SwitchRoutes routes={routes} />
         </BrowserRouter>
