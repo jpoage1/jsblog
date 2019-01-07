@@ -27,15 +27,13 @@ const routes =
 		    			type: 'text',
 	    				value: 'Post Title',
 	    			},
-	    			label: 'title',
 	    		},
-	    		date: {
+	    		timestamp: {
 	    			Tag: 'input',
 	    			props: {
 		    			type: 'text',
 	    				value: 'Date',
 	    			},
-	    			label: 'date',
 	    		},
 	    		content: {
 	    			Tag: 'textarea',
@@ -43,7 +41,6 @@ const routes =
 		    			type: 'text',
 	    				value: 'Content',
 	    			},
-	    			label: 'content',
 	    		},
 	    	},
 		},

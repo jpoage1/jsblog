@@ -40,8 +40,36 @@ module.exports = [
 				},
 			},
 		},
-		formDefaults: {
-			nickname: 'Enter a nick name',
+	},
+	{
+		path: '/Api/RecentPosts',
+		method: {
+			get: {
+				select: ['id','title'],
+				from: ['posts'],
+				where: [],
+				order: '', // asc, desc
+				orderBy: ['timestamp'],
+			},
+		},
+		table: {
+			name: 'posts',
+			columns: {
+				id: {
+					type: 'integer',
+					autoIncrement: true,
+				},
+				title: {
+					type: 'string',
+				},
+				timestamp: {
+					type: 'bigint',
+					validate: 'timestamp'
+				},
+				content: {
+					type: 'string'
+				},
+			},
 		},
 	},
 ];

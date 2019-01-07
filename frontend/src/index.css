@@ -68,9 +68,13 @@ body {
 
 /* Add a card effect for articles */
 .post, .menu {
+  font-size: 16pt;
   background-color: white;
   padding: 20px;
   margin-top: 20px;
+}
+.menu a {
+  display: block;
 }
 .post .p {
 	width: 100%

@@ -63,7 +63,7 @@ routes.forEach( (route) => {
 			const value = body[column];
 			const validateData = route.table.columns[column].validate
 				? dataValidation(route.table.columns[column].validate, value)
-				: dataValidation(dataType, value);
+				: dataValidation(dataType);
 			return validateData();
 		}).join(', ');
 		const sql = `INSERT INTO ${table}\n(${sqlColumns})\nVALUES\n(${sqlValues}) `;
