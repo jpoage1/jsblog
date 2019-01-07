@@ -9,6 +9,7 @@ import registerServiceWorker from './registerServiceWorker';
 import Header from './Modules/Header'
 import Body from './Modules/Body'
 import Footer from './Modules/Footer'
+
 ReactDOM.render(
   <CookiesProvider>
         <Header />

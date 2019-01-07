@@ -1,7 +1,6 @@
-import React from 'react';
-import Form from "./Form"
+import React, { Component } from 'react';
 
-class DrawElement extends Form {
+class DrawElement extends Component {
 	newState(x,y) {
 		// wrapper function: props are only allow  to be lowercase 
 		return this.props.newstate(x,y)
