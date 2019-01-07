@@ -17,18 +17,6 @@ class RecentPosts extends GetData {
 		this.getData('http://127.0.0.1:5000/Api/RecentPosts');
 	}
 	render() {
-		/*
-		const posts = [{
-			title: 'Post Title',
-			author: 'Author',
-			date: 'Date',
-			content: 'Content',
-		},{
-			title: 'Post Title',
-			author: 'Author',
-			date: 'Date',
-			content: 'Content',
-		}] */
 		const { data } = this.state;
 		const htmlData = data ? data.map( ( data, i ) => {
 			const element = {
