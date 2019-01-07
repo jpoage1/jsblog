@@ -33,14 +33,13 @@ class DrawElement extends Form {
 		return eventHandlers;
 	}
 	render () {
-		const { element } = this.props
-		const elementName = this.props.name;
-		const { Tag } = element;
-		const elementProps = element.props;
-		let props = {};
-		let children;
-		children = element.children;
+		const { element } = this.props;
+		
 		const eventHandlers = this.newState ? this.setEventHandlers() : undefined;
+
+
+		let props = {};
+		const elementProps = element.props;
 		if ( elementProps ) Object.keys(elementProps).forEach( (prop) => {
 			if ( prop === 'value' ) {
 				props[prop] = this.props.data;
@@ -48,6 +47,14 @@ class DrawElement extends Form {
 				props[prop] = elementProps[prop];
 			}
 		});
+
+		let children = element.children;
+		if ( children && element.drawChildren && Array.isArray(children) ) {
+			children = children.map( (child) => (<DrawElement element={child} />) );
+		}
+
+		const { Tag } = element;
+		const elementName = this.props.name;
 		if ( !children ) {
 			// use data route
 			if ( Tag === 'select') {

@@ -28,11 +28,6 @@ class Form extends Component {
 			formData: this.defaultFormValues(),
 		});
 	}
-	togglePopup() {
-		this.setState({
-		  showPopup: !this.state.showPopup
-		});
-	}
 	parseNewData(newData) {
 		let changes = {};
 		Object.keys(this.props.form).forEach((key, i) => {
@@ -97,6 +92,7 @@ class Form extends Component {
 		return data;
 	}
 	// set data for viewing/GET requests, and log any changes
+	// Useful for when editing several rows of data at one time
 	setData() {
 		this.getData(this.props.dataRoute, ( data ) => {
 			const b1 = new Set(data);
