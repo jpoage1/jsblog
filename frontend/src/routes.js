@@ -9,11 +9,11 @@ const routes =
 	    component: Posts,
 	},*/
 	{
-	    path: '',
+	    path: '/',
 	    component: Posts,
 	    exact: true,
 	    default: 
-	    	{
+    	{
 			title: 'No Posts',
 			content: `There currently aren't any posts to display.`,
 	    }
@@ -49,6 +49,14 @@ const routes =
 	    		},
 	    	},
 		},
+	},
+	{ // No 'path' is set because it is a catch all
+		component: Posts,
+	    default: 
+    	{
+			title: 'Error 404',
+			content: `The page cannot be found`,
+	    }
 	},
 ];
 export default routes;

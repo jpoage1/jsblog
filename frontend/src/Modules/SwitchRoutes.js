@@ -12,25 +12,27 @@ class SwitchRoutes extends Component {
       exact={exact}
     />);
   };
-  routeConfig(routes, pathPrefix, k) {
-    return routes.map(({ path, alias, component: C, exact, routes, routeProps }, i) => {
-        const fullPath = pathPrefix ? `${pathPrefix}/${path}` : `/${path}`;
-        // Route doesn't have a component attoached.
-       // if ( !C && routes ) // Then dig deeper for more routes
-         // return this.switchRoutes(routes, fullPath, j);
-        const switchRoutes = routes !== undefined && routes.length > 0
-          ? this.routeConfig(routes, fullPath, 0)
-          : [];
+  renderComponent(pathPrefix, k, route, i) {
+    const { path, component: C, exact, routes, routeProps } = route
+    const fullPath = pathPrefix ? `${pathPrefix}/${path}` : `/${path}`;
+    // Route doesn't have a component attoached.
+   // if ( !C && routes ) // Then dig deeper for more routes
+     // return this.switchRoutes(routes, fullPath, j);
+    const switchRoutes = routes !== undefined && routes.length > 0
+      ? this.routeConfig(routes, fullPath, 0)
+      : [];
 
-        const RoutesToMenu = path === '' ? this.props.routes : undefined;
-        const routeConfig = {
-          path: fullPath,
-          render: (props) => (<C {...this.props} {...props} {...routeProps} routes={RoutesToMenu} route={this.props.routes[i]} />),
-          key: `route_${path}_${i}`,
-          exact: exact === true ? true : false,
-        }
-        return switchRoutes.concat([routeConfig]);
-      });
+    const RoutesToMenu = path === '' ? this.props.routes : undefined;
+    const routeConfig = {
+      path: path ? fullPath : undefined,
+      render: (props) => (<C {...this.props} {...props} {...routeProps} routes={RoutesToMenu} route={this.props.routes[i]} />),
+      key: `route_${path}_${i}`,
+      exact: exact === true ? true : false,
+    }
+    return switchRoutes.concat([routeConfig]);
+  }
+  routeConfig(routes, pathPrefix, k) {
+    return routes.map( (route, i) => this.renderComponent(pathPrefix, k, route, i));
   }
   foldRoutes(routes) {
     if ( !Array.isArray(routes) )
