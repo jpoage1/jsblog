@@ -2,6 +2,12 @@
 const dataValidation = require("./Components/dataValidation");
 module.exports = [
 	{
+		path: '/status',
+		module: (req, res) => {
+			res.send("ok");
+		},
+	},
+	{
 		path: '/Api/Posts',
 		method: {
 			get: {

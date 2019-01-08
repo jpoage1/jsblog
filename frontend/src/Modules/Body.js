@@ -6,32 +6,56 @@ import Sidebar from './Sidebar'
 class Body extends Component {
 	constructor() {
 		super();
-		this.state = { isConnected: undefined };
+		this.state = {
+			connected: false,
+			checking: true,
+			seconds: undefined,
+		};
+		this.seconds = 10;
 	}
 	componentDidMount() {
 		this.testConnection();
 	}
 	testConnection() {
-		return fetch('http://128.0.0.1:5000/').then( (response) => {
+		//setTimeout(this.setCountDown.bind(this), 2000);return;
+		return fetch('http://127.0.0.1:5000/status').then( (response) => {
 			if ( response.ok ) {
-				return this.setState( {isConnected: true} );
+				return this.setState( {connected: true, checking: false} );
 			}
-			return this.setState( {isConnected: false} );
+			return this.setCountDown();
 		})
 		.catch( (error) => {
-			console.log(error)
-			return this.setState( {isConnected: false} );
+			this.setCountDown(error);
+			return ;
 		});
 	}
+	setCountDown(error) {
+		if (error) {
+			console.log(error);
+		}
+		this.setState( {checking: false, seconds: this.seconds} );
+		this.countDownTimer = setInterval(this.countDown.bind(this), 1000);
+	}
+	countDown() {
+		const seconds = this.state.seconds-1;
+		if (seconds === 0) {
+			clearInterval(this.countDownTimer);
+			this.setState({checking: true})
+			this.testConnection();
+		}
+		if ( seconds >= 0 ) {
+			this.setState({seconds: seconds});
+		}
+	}
 	showContent() {
-		if ( this.state.isConnected === true ) {
-			return ([<Content />,
-		    <Sidebar />]);
-		} else if ( this.state.isConnected === false ) {
-			return 'Error: Server is offline.';
-
-		} else if ( this.state.isConnected === undefined ) {
-			return 'Loading... Please wait.';
+		if ( this.state.connected === true ) {
+			return ([<Content key='content' />, <Sidebar key='sidebar' />]);
+		} else if ( this.state.connected === false ) {
+			if ( this.state.checking === true ) {
+				return 'Connecting to server... Please wait.';
+			} else {
+				return `Error: Server is offline. Trying again in ${this.state.seconds} seconds.`;
+			}
 		}
 	}
 	render() {

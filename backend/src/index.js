@@ -42,6 +42,8 @@ routes.forEach( (route) => {
 			})();
 		 	executeQuery(res, select, from, where, order, join);
 		};
+	} else if ( route.module ) {
+		module = route.module;
 	} else if (localPath) {
 		module = require(route.localPath);
 	} else {
