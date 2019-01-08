@@ -12,7 +12,7 @@ class GetData extends Component {
 		this.setState({ isLoading: false, ...newData });
 		//this.setState({ isLoading: false, worksheetData: worksheetData });
 	}
-	getData(dataRoute) {
+	getData(dataRoute, queryVars = []) {
 		const data = getIt(dataRoute);
 		data.then((data) => {
 			this.updateWithNewData({data: data});

@@ -49,7 +49,7 @@ class Form extends Component {
 			//create
 			'post' : _ => {
 				console.log(this.state.formData)
-				postIt(this.props.dataRoute, this.state.formData);
+				postIt(this.props.route.dataRoute, this.state.formData);
 				const formData = this.parseNewData(this.state.formData);
 				return [formData].concat(this.state.changes);
 			},

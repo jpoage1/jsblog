@@ -8,7 +8,7 @@ module.exports = [
 		},
 	},
 	{
-		path: '/Api/Posts',
+		path: '/Posts',
 		method: {
 			get: {
 				select: ['id','title','timestamp','content'],
@@ -48,7 +48,47 @@ module.exports = [
 		},
 	},
 	{
-		path: '/Api/RecentPosts',
+		path: '/Post/:id',
+		method: {
+			get: {
+				select: ['id','title','timestamp','content'],
+				from: ['posts'],
+				where: [['id','eq',':params.id']], // need to do data validation to make sure there is an array nested inside of an array
+				order: '', // asc, desc
+				orderBy: [],
+			},
+			post: {
+				table: 'posts',
+				insert: ['title', 'timestamp', 'content'],
+			},
+			put: '*',
+			delete: {
+				table: 'posts',
+				where: ['id','eq',':id'],
+			},
+		},
+		table: {
+			name: 'posts',
+			columns: {
+				id: {
+					type: 'integer',
+					autoIncrement: true,
+				},
+				title: {
+					type: 'string',
+				},
+				timestamp: {
+					type: 'bigint',
+					validate: 'timestamp'
+				},
+				content: {
+					type: 'string'
+				},
+			},
+		},
+	},
+	{
+		path: '/RecentPosts',
 		method: {
 			get: {
 				select: ['id','title'],

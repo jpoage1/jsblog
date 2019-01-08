@@ -6,10 +6,10 @@ import BrowseByCategory from '../Components/BrowseByCategory';
 class Sidebar extends Component {
   render() {
     return (
-      <div className="sidebar">
+      <nav className="sidebar">
         <RecentPosts />
         <BrowseByCategory />
-      </div>
+      </nav>
     );
   }
 }

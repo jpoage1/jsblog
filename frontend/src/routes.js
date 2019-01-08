@@ -1,5 +1,7 @@
 import Posts from './Components/Posts';
+//import Post from './Components/Post';
 import NewPost from './Components/NewPost';
+import server from './server';
 
 const routes = 
 [
@@ -12,7 +14,7 @@ const routes =
 	    path: '/',
 	    component: Posts,
 	    exact: true,
-		dataRoute: 'http://127.0.0.1:5000/Api/Posts',
+		dataRoute: `${server}/Posts`,
 	    default: 
     	{
 			title: 'No Posts',
@@ -20,8 +22,19 @@ const routes =
 	    }
 	},
 	{
+	    path: 'Post/:id',
+	    component: Posts,
+		dataRoute: `${server}`,
+	    default: 
+    	{
+			title: 'Sorry',
+			content: `You have either reached this page in error, or the article you are attempting to read has been deleted.`,
+	    }
+	},
+	{
 	    path: 'newpost',
 	    component: NewPost,
+		dataRoute: `${server}/Posts`,
 	    routeProps: {
 	    	header: 'New Post',
 	    	popupHeader: 'Edit Post',

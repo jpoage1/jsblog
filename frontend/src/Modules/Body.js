@@ -62,9 +62,9 @@ class Body extends Component {
 	render() {
 		const showContent = this.showContent();
 		return (
-		  <div className="body">
+		  <main className="body">
 		    {showContent}
-		  </div>
+		  </main>
 		);
 	}
 }

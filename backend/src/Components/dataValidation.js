@@ -7,7 +7,7 @@ class validateData {
 		return `${timestamp}`;
 	}
 	string () {
-		const escapedString = this.escapeElement(this.value)
+		const escapedString = this.escapeString(this.value)
 		return `'${escapedString}'`;
 	}
 	integer () {
