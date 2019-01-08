@@ -1,5 +1,6 @@
 import React , { Component } from 'react';
 
+import server from './../server'
 import Content from './Content'
 import Sidebar from './Sidebar'
 
@@ -18,7 +19,7 @@ class Body extends Component {
 	}
 	testConnection() {
 		//setTimeout(this.setCountDown.bind(this), 2000);return;
-		return fetch('http://127.0.0.1:5000/status').then( (response) => {
+		return fetch(`${server}/status`).then( (response) => {
 			if ( response.ok ) {
 				return this.setState( {connected: true, checking: false} );
 			}

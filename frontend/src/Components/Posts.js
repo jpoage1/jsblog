@@ -5,7 +5,7 @@ import GetData from '../Modules/GetData';
 class Posts extends GetData {
 	componentDidMount() {
 		this.setState({ isLoading: true });
-		this.getData('http://127.0.0.1:5000/Api/Posts');
+		this.getData(this.props.route.dataRoute);
 	}
 	render() {
 		/*

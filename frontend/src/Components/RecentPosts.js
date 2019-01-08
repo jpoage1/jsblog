@@ -1,4 +1,5 @@
 import React from 'react';
+import server from './../server'
 import GetData from '../Modules/GetData';
 import DrawElement from "../Modules/DrawElement";
 
@@ -14,7 +15,9 @@ class RecentPosts extends GetData {
 	}
 	componentDidMount() {
 		this.setState({ isLoading: true });
-		this.getData('http://127.0.0.1:5000/Api/RecentPosts');
+		// this.props.route.dataRoute doesn't exist, because its not configured in routes.js
+		// perhaps later there will be a config for modules that exist outside of the standard routes.js
+		this.getData(`${server}/Api/RecentPosts`);
 	}
 	render() {
 		const { data } = this.state;
@@ -22,7 +25,7 @@ class RecentPosts extends GetData {
 			const element = {
     			Tag: 'a',
     			props: {
-	    			href: `http://jasonpoage.com/Post/${data.id}`,
+	    			href: `http://localhost:3000/Post/${data.id}`,
     			},
     			label: data.title,
 			};

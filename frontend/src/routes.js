@@ -12,6 +12,7 @@ const routes =
 	    path: '/',
 	    component: Posts,
 	    exact: true,
+		dataRoute: 'http://127.0.0.1:5000/Api/Posts',
 	    default: 
     	{
 			title: 'No Posts',
@@ -24,7 +25,6 @@ const routes =
 	    routeProps: {
 	    	header: 'New Post',
 	    	popupHeader: 'Edit Post',
-			dataRoute: 'http://127.0.0.1:5000/Api/Posts',
 	    	form: {
 	    		title: {
 	    			Tag: 'input',
