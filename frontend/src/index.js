@@ -6,9 +6,9 @@ import './reset.css';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
-import Header from './Modules/Header'
-import Body from './Modules/Body'
-import Footer from './Modules/Footer'
+import Header from './Modules/Main/Header'
+import Body from './Modules/Main/Body'
+import Footer from './Modules/Main/Footer'
 
 ReactDOM.render(
   <CookiesProvider>

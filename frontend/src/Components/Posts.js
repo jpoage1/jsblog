@@ -31,7 +31,6 @@ class Posts extends GetData {
 				newPath = undefined;
 			}
 		}
-		console.log(newPath)
 		const dataRoute = [this.props.route.dataRoute,newPath].join('');
 		this.getData(dataRoute);
 	}
