@@ -17,8 +17,14 @@ class Form extends Component {
 	}
 	newState (elementName, newValue)
 	{
-		let newState = this.state;
-		newState.formData[elementName] = newValue;
+		let newState;
+		if ( newValue !== undefined ) {
+			newState = this.state;
+			newState.formData[elementName] = newValue;
+		} else {
+			// this makes the function equivalent to vanilla setState()
+			newState = { newState, ...elementName };
+		}
 		this.setState(newState);
 	}
 	componentDidMount() {

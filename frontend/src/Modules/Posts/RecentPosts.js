@@ -21,13 +21,13 @@ class Card extends GetData {
 	}
 	render() {
 		const { data } = this.state;
-		const htmlData = data ? data.map( ( data, i ) => {
+		const htmlData = data ? data.map( ( link, i ) => {
 			const element = {
     			Tag: 'a',
     			props: {
-	    			href: `http://localhost:3000/Post/${data.id}`,
+	    			href: `http://localhost:3000/Post/${link.id}`,
     			},
-    			label: data.title,
+    			label: link.title,
 			};
 			return (<p key={i}><DrawElement element={element} /></p>);
 		}) : undefined;

@@ -20,7 +20,9 @@ class Post extends GetData {
 	}
 	render() {
 		const post = this.isSelf() ? this.state.data[0] : this.props.post;
-		const x = [post.author,post.date].join(', ');
+		const date = new Date(post.timestamp);
+		const x = [post.author,date].join(', ');
+		console.log(post)
 		return (
 		  <article className="post">
 		    <h2>{post.title}</h2>

@@ -55,6 +55,20 @@ const posts_routes = [
 	    				value: 'Alias',
 	    			},
 	    		},
+	    		email: {
+	    			Tag: 'input',
+	    			props: {
+		    			type: 'text',
+	    				value: 'Email Address',
+	    			},
+	    		},
+	    		password: {
+	    			Tag: 'input',
+	    			props: {
+		    			type: 'password',
+	    				value: 'Password',
+	    			},
+	    		},
 	    	},
 		},
 	},/*
