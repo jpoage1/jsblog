@@ -15,7 +15,7 @@ class SwitchRoutes extends RenderConfig {
     const RoutesToMenu = path === '' ? this.props.routes : undefined;
     const routeConfig = {
       path: path ? fullPath : undefined,
-      render: (props) => (<C {...this.props} {...props} {...routeProps} routes={RoutesToMenu} route={this.props.routes[i]} />),
+      render: (props) => (<C component={C} {...this.props} {...props} {...routeProps} routes={RoutesToMenu} route={this.props.routes[i]} />),
       key: `route_${path}_${i}`,
       exact: exact === true ? true : false,
     }

@@ -80,7 +80,6 @@ class DrawElement extends Component {
 				passProps[prop] = this.props[prop];
 			}
 		});
-
 		if ( Array.isArray(children) || children ) {
 			return (<Tag name={elementName} {...eventHandlers} {...props} {...passProps}>{children}</Tag>);
 		} else {

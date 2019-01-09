@@ -1,19 +1,35 @@
-import React , { Component } from 'react';
+import React from 'react';
+import GetData from '../Main/GetData';
 
-class Post extends Component {
+class Post extends GetData {
+	constructor() {
+		super();
+		this.state = {
+			data: [[{}]],
+		}
+	}
 	componentDidMount() {
 		this.setState({ isLoading: true });
-//		this.getData(this.props.route.dataRoute);
+		if ( this.props.component === Post ) {
+			this.validateDataRoute();
+			this.getData(this.dataRoute);
+		}
+	}
+	isSelf() {
+		return this.props.component === Post;
 	}
 	render() {
-		const x = [this.props.post.author,this.props.post.date].join(', ');
+		const post = this.isSelf() ? this.state.data[0] : this.props.post;
+		const x = [post.author,post.date].join(', ');
 		return (
 		  <article className="post">
-		    <h2>{this.props.post.title}</h2>
-		    <h5>{x}</h5>
-		    <p>{this.props.post.content}</p>
+		    <h2>{post.title}</h2>
+		  	<h5>{x}</h5>
+		    <p>{post.content}</p>
 		  </article>
 		);
 	}
 }
 export default Post;
+/*
+ 		    */

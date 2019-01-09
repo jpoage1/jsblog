@@ -17,7 +17,7 @@ class Card extends GetData {
 		this.setState({ isLoading: true });
 		// this.props.route.dataRoute doesn't exist, because its not configured in routes.js
 		// perhaps later there will be a config for modules that exist outside of the standard routes.js
-		this.getData(`${server}/RecentPosts`);
+		this.getData(`${server}/Posts/Sidebar`);
 	}
 	render() {
 		const { data } = this.state;
@@ -33,8 +33,8 @@ class Card extends GetData {
 		}) : undefined;
 		return (
 			<div className="menu">
-				<h3><a href="/">Recent Posts</a></h3>
-		    	<p> -> <a href="/newpost">New Post</a></p>
+				<h3><a href="/Posts">Recent Posts</a></h3>
+		    	<p> -> <a href="/Post/New">New Post</a></p>
 				{htmlData}
 			</div>
 		);

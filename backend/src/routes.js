@@ -11,7 +11,7 @@ module.exports = [
 		path: '/Posts',
 		method: {
 			get: {
-				select: ['id','title','timestamp','content'],
+				select: ['id','title','author','timestamp','content'],
 				from: ['posts'],
 				where: [],
 				order: '', // asc, desc
@@ -37,6 +37,9 @@ module.exports = [
 				title: {
 					type: 'string',
 				},
+				author: {
+					type: 'integer',
+				},
 				timestamp: {
 					type: 'bigint',
 					validate: 'timestamp'
@@ -51,7 +54,7 @@ module.exports = [
 		path: '/Post/:id',
 		method: {
 			get: {
-				select: ['id','title','timestamp','content'],
+				select: ['id','title','author','timestamp','content'],
 				from: ['posts'],
 				where: [['id','eq',':params.id']], // need to do data validation to make sure there is an array nested inside of an array
 				order: '', // asc, desc
@@ -88,7 +91,7 @@ module.exports = [
 		},
 	},
 	{
-		path: '/RecentPosts',
+		path: '/Posts/Sidebar',
 		method: {
 			get: {
 				select: ['id','title'],

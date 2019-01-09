@@ -1,5 +1,5 @@
 import Posts from './Posts';
-//import Post from './Components/Post';
+import Post from './Post';
 import NewPost from './NewPost';
 import EditPost from './EditPost';
 import server from './../../server';
@@ -83,8 +83,8 @@ const posts_routes = [
 	},
 	{
 	    path: 'Post/:id',
-	    component: Posts,
-		dataRoute: `${server}`,
+	    component: Post,
+		dataRoute: `${server}/Post/:id`,
 		exact: true,
 	    default: 
     	{
